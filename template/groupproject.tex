@@ -63,24 +63,42 @@ In less than 1000 characters (not counting spaces), explain the project goals an
 %---------------------------------------------------------------------
 \newpage
 %---------------------------------------------------------------------
-\section{Why are we looking for levees? And what are they?}
+\section{What is a levee? And why are we looking for them?}
 \label{sec:introduction}
 %\input{introduction}
 %---------------------------------------------------------------------
-Brief overview of USGS missing levees, an example plot needed too to help visualise. Some short explanation of how Fathom use levees in their models.
+-- MB --\\
+A levee is a form of flood defence used along the banks of a river typically made from compacted earth and sometimes reinforced with concrete or rocks for additional strength. In the USA, the the National Levee Database (NLD) is maintained by the US Army Corps of Engineers (USACE), containing a record of approximately 40,000~km of levee systems, with 36 million people residing in areas protected by these levees.
+
+However, the database is known to be incomplete and contain incorrect coordinates for some levee paths, mostly due to a large portion of the early levee systems which were built by farmers and settlers up to centuries ago. An example of some of these inconsistencies can be shown in [FIGURE].
+
+These errors cause issues for Fathom, who need precise levee positions in order to produce highly accurate flood modelling data. These models are used across industries including humanitarian aid, insurance, international development, engineering, conservation and financial markets.
 \section{Image Segmenation}
 \label{sec:method}
 %\input{method}
 %---------------------------------------------------------------------
-Short overview of image segmentation and how it is used in our project.
+-- PM --\\
+Short overview of image segmentation and how it is used in our project with a short description of Segmenation Models Pytorch and what we've used from there.
 \section{Creating a pipeline}
 \label{sec:results}
 %\input{results}
 %---------------------------------------------------------------------
-Explanation of the pipeline in full, from data downloading to inference.
-\section{What we learnt and Conclusions}
+\subsection{Data}
+-- LS --\\
+Description of downloading and collating data required from the USGS database, both existing levees and TIF files.
+\subsection{Data Processing}
+-- PM --\\
+Description of mask creation and trimming of larger files.
+\subsection{Model Training}
+-- MB --\\
+Description of GroupedKFold methodology
+\subsection{Inference}
+-- MB --\\
+Description of predictions made and output.
+\section{What we learned \& Conclusions}
 \label{sec:conclusion}
 %\input{conclusion}
 %---------------------------------------------------------------------
+-- ALL --\\
 Couple of short bullet points and a conclusion of the project.
 \end{document}
