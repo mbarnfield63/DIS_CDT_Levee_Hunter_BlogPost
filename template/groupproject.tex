@@ -89,12 +89,22 @@ Description of downloading and collating the data required from the USGS databas
 \subsection{Data Processing}
 -- PM --\\
 Description of mask creation and trimming of larger files.
-\subsection{Model Training}
+\subsection{Model Training using K-Fold}
 -- MB --\\
-Description of GroupedKFold methodology
+Standard K-Fold cross-validation divides the dataset into K part of equal size (folds); the model is then trained on K-1 folds of data, with testing on the remaining fold. This process is repeated K times, with each part being used once as the testing set. However, in real-world applications, data points aren't independent and can exist in defined groups, leading to over optimistic performance estimates as data from the same group exists in both the training and testing folds.
+
+A "Group K-Fold Cross-Validation" method was used in this case to ensure that the smaller TIF images originating from each larger TIF image were split across groups (which are then evenly distributed to folds) and thus included in either the training set or the testing set for each fold. This helps prevent the model from learning and testing on an image from the same region (i.e. from the same original TIF file), improving model generalization to new, unseen data, while also providing realistic performance metrics, as future data will also be grouped the same way.
+
+Following the GroupKFold, the model with the strongest metrics from the folds is selected to run inference, therefore, all the hyperparameters are saved in a JSON config file to be loaded in the inference pipeline.
 \subsection{Inference}
 -- MB --\\
-Description of predictions made and output.
+\[DRAFT\]
+\begin{enumerate}
+    \item Load model
+    \item Hyperparams from best fold
+    \item Retrain on full dataset
+    \item Validate on Sacramento area (show in figure)
+\end{enumerate}
 \section{What we learned \& Conclusions}
 \label{sec:conclusion}
 %\input{conclusion}
